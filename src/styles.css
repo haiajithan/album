@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+	margin: auto;
+	padding: 0;
+}
+
+.album-title {
+	white-space: nowrap;
+	width: 50%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: bold;
+	float: left;
+	margin: auto;
+    margin-top: 10px;
+}
+
+.album-image-cover {
+	width: 26%;
+	float: left;
+    margin: 10px;
+	cursor: pointer;
+}
+
+.mobile-hide{
+	display: block;
+}
+
+.fooder-align{
+    text-align: right;
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid #e0dddd;
+    background: white;
+    padding: 5px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+	.album-title {
+		float: none;
+		text-align: center;
+		white-space: nowrap;
+		width:200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-weight: bold;
+		margin: auto;
+    	margin-top: 10px;
+		}
+
+	.album-image-cover {
+		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+  		width: 50%;
+		float: none;
+	}
+
+	.mobile-hide{
+		display: none;
+	}
+	.fooder-align{
+		text-align: center;
+		position: sticky;
+		bottom: 0;
+		border-top: 1px solid #e0dddd;
+		background: white;
+		padding: 5px;
+	}
+}
+
+
+
+.album-name{
+    margin-left: 16px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.album-heading{
+    font-size: x-large;
+    font-weight: bold;
+}
+

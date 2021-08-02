@@ -1,0 +1,17 @@
+<app-album-header (sortChange)="sortingData($event)"></app-album-header>
+<div class="col-md-12">
+    <app-loader *ngIf="loader"></app-loader>
+    <div class="album-name">{{albumName}}</div>
+    <div class="row">
+        <div class="col-md-3 p-3 col-6" *ngFor="let photo of photos">
+            <div class="card">
+                <div class="card-block">
+                    <div><img class="img-fluid" src={{photo.url}}></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-album-footer></app-album-footer>
