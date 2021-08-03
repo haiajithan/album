@@ -1,8 +1,10 @@
+import { AppSettings } from './../../app-settings';
 import { Sort } from './../../Entity/common.enum';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Album } from 'src/app/Entity/album';
 import { AlbumService } from 'src/app/service/album.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,18 +17,18 @@ export class AlbumCoverComponent implements OnInit {
   albums: Album[]=[];
   loader:boolean=false;
   
-  constructor(private albumService: AlbumService, private router: Router,) { }
+  constructor(private albumService: AlbumService, private router: Router) { }
   
   ngOnInit(): void {
     this.getAlbum();
   }
 
   // Get Album
-  getAlbum() {
+  getAlbum(){
     this.loader=true;
     this.albumService.getAlbum().subscribe(
       (res) => {
-        this.albums = res;
+        this.albums = res.filter((album) => album.id != AppSettings.Filtered_Album);
         this.sortingData(Sort.ASC);
         this.loader =false;
       },
@@ -50,5 +52,4 @@ export class AlbumCoverComponent implements OnInit {
       this.albums.sort((a: any, b: any) => b.title.localeCompare(a.title));
     }
   }
-
 }

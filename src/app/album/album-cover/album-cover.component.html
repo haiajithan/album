@@ -1,18 +1,13 @@
 <app-album-header (sortChange)="sortingData($event)"></app-album-header>
-
-<div class="col-12">
+<div class="col-12 vertical-height">
     <app-loader *ngIf="loader"></app-loader> 
     <div class="row">
         <div class="col-12 col-md-6 col-sm-12 col-xs-12 p-3 " *ngFor="let album of albums">
             <div class="card">
-                <div class="card-block">
                     <div (click)="onClickImage(album);" class="album-image-cover"><img class="img-fluid"
                             src="assets/img/image.png"></div>
-                    <div class="album-title">{{ album.title }}</div>
-                    <!-- <div class="clearfix"></div> -->
-                </div>
+                    <div id="albumtitle" class="album-title">{{ album.title }}</div>
             </div>
-
         </div>
     </div>
 </div>

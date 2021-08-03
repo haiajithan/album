@@ -83,3 +83,7 @@ body{
     font-weight: bold;
 }
 
+.vertical-height{
+	min-height: 90vh;
+}
+

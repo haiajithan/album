@@ -1,8 +1,10 @@
+import { Album } from './../../Entity/album';
 import { Photos } from './../../Entity/photos';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlbumService } from 'src/app/service/album.service';
 import { Sort } from 'src/app/Entity/common.enum';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-album-grid',
@@ -14,7 +16,7 @@ export class AlbumGridComponent implements OnInit {
   albumName: string = '';
   photos: Photos[] = []
   loader: boolean = false;
-  constructor(private albumService: AlbumService, public activatedRoute: ActivatedRoute,) { }
+  constructor(private albumService: AlbumService, public activatedRoute: ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -29,6 +31,7 @@ export class AlbumGridComponent implements OnInit {
     this.loader = true;
     this.albumService.getPhoto(this.id).subscribe(
       (res) => {
+        
         this.photos = res;
         this.sortingData(Sort.ASC);
         this.loader = false;
@@ -53,7 +56,8 @@ export class AlbumGridComponent implements OnInit {
   getAlbumName() {
     this.albumService.getAlbum().subscribe(
       (res) => {
-        this.albumName = res.find((album: any) => album.id === Number(this.id)).title;
+        let result:Album[]=res
+        this.albumName =result.find((album) => album.id === this.id)?.title!;
       },
       (error) => {
         console.error(error)
